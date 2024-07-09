@@ -5,6 +5,7 @@ import {
   CodePipelineSource,
   ShellStep,
 } from "aws-cdk-lib/pipelines";
+import { AppStage } from "./app-stage";
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 export class RrtcdkStack extends cdk.Stack {
@@ -20,10 +21,17 @@ export class RrtcdkStack extends cdk.Stack {
 
     const pipeline = new CodePipeline(this, "Pipeline", {
       pipelineName: "RrtcdkPipeline",
+      crossAccountKeys: true,
       synth: new ShellStep("Synth", {
         input: CodePipelineSource.gitHub("robertrahardja/rrtcdk", "main"),
         commands: ["npm ci", "npm run build", "npx cdk synth"],
       }),
     });
+
+    pipeline.addStage(
+      new AppStage(this, "Dev", {
+        env: { account: "058264243632", region: "ap-southeast-1" },
+      }),
+    );
   }
 }
