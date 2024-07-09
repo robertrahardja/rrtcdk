@@ -1,0 +1,20 @@
+{
+  "version": "36.0.0",
+  "files": {
+    "84f2160f09bb767d497e10eb879b80f7b3a6f0b7e9bb7807b4d24704a52ff36a": {
+      "source": {
+        "path": "RrtcdkStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "891377221747-ap-southeast-1": {
+          "bucketName": "cdk-hnb659fds-assets-891377221747-ap-southeast-1",
+          "objectKey": "84f2160f09bb767d497e10eb879b80f7b3a6f0b7e9bb7807b4d24704a52ff36a.json",
+          "region": "ap-southeast-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::891377221747:role/cdk-hnb659fds-file-publishing-role-891377221747-ap-southeast-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
